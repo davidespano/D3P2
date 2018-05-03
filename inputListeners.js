@@ -114,3 +114,13 @@ function onDimZChange()
 
 }
 
+function onVisibilityChange()
+{
+
+    var elementsSelected = document.getElementsByClassName("selected");
+
+    var entityVisible = document.getElementById("entity_visible");
+
+    elementsSelected[0].object3D.visible = !elementsSelected[0].object3D.visible;
+
+}

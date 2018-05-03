@@ -16,29 +16,8 @@ AFRAME.registerComponent('my-cursor-listener', {
                 selected2BeRemoved[0].classList.remove("selected");
             }
             myelement.classList.add("selected");
-            var barDiv = document.getElementById("mySidenav");
+            updateEntireLateralBar(myelement);
 
-            var inputPosX = document.getElementById("spinner_pos_x");
-            var inputPosZ = document.getElementById("spinner_pos_y");
-            var inputPosY = document.getElementById("spinner_pos_z");
-
-            var inputDimX = document.getElementById("dim_x");
-            var inputDimY = document.getElementById("dim_y");
-            var inputDimZ = document.getElementById("dim_z");
-
-            var inputJsColor = document.getElementById("jscolor");
-            //var inputProva = document.getElementById("prova");
-
-            inputPosX.value = (myelement.getAttribute("position").x).toString();
-            inputPosZ.value = (myelement.getAttribute("position").z).toString();
-            inputPosY.value = (myelement.getAttribute("position").y).toString();
-
-            inputDimX.value = (myelement.getAttribute("scale").x).toString();
-            inputDimY.value = (myelement.getAttribute("scale").y).toString();
-            inputDimZ.value = (myelement.getAttribute("scale").z).toString();
-
-            inputJsColor.jscolor.fromString(myelement.getAttribute("color").toString());
-            //inputJsColor.jscolor.value
 
             /*barDiv.innerHTML = "<a href=\"javascript:void(0)\" class=\"closebtn\" onclick=\"closeNav()\">&times;</a>\n" +
                 "        <a href=\"#\">About</a>";

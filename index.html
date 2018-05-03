@@ -21,6 +21,7 @@
     <script type="text/javascript" src="sidebar.js"></script>
     <script type="text/javascript" src="CursorListener.js"></script>
     <script type="text/javascript" src="inputListeners.js"></script>
+    <script type="text/javascript" src="lateralBarAPI.js"></script>
 
 
 
@@ -95,7 +96,7 @@
 
                 <tr style="padding-top: 25px">
                     <th style="padding-top: 25px">Visible:</th>
-                    <th style="padding-top: 25px"><input type="checkbox" id="entity_visible"/></th>
+                    <th style="padding-top: 25px"><input type="checkbox" id="entity_visible" onchange="onVisibilityChange()"></th>
                     <th></th>
                     <td><div class="help-tip" style="top: 10px;">
                         <p>If the checkbox is set object is visible, else the object is not visible</p>
