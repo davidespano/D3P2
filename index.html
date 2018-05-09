@@ -41,67 +41,76 @@
                 </tr>
                 <tr class="firstOfType">
                     <th class="firstOfType"></th>
-                    <th class="firstOfType"><input type="number" id="spinner_pos_x" onchange="onSpinnerPosXChange()" onspin="onSpinnerPosXChange()" step="0.1"></th>
                     <th class="firstOfType">Horizontal</th>
+                    <th class="firstOfType"><input type="number" id="spinner_pos_x" onchange="onSpinnerPosXChange()" onspin="onSpinnerPosXChange()" step="0.1"></th>
+
                     <th><div class="help-tip" style="top: 10px;">
-                        <p>Whit this panel, you can move an object horizontally writing directly or using the arrows.</p>
+                        <p>With this panel, you can move an object horizontally writing directly or using the arrows.</p>
                     </div></th>
                 </tr>
                 <tr>
                     <th>Position: </th>
-                    <th><input type="number" id="spinner_pos_y" onchange="onSpinnerPosYChange()" onspin="onSpinnerPosYChange()" step="0.1"></th>
                     <th>Vertical</th>
+                    <th><input type="number" id="spinner_pos_y" onchange="onSpinnerPosYChange()" onspin="onSpinnerPosYChange()" step="0.1"></th>
+
                     <th><div class="help-tip">
-                        <p>Whit this panel, you can move an object vertically writing directly or using the arrows.</p>
+                        <p>With this panel, you can move an object vertically writing directly or using the arrows.</p>
                     </div></th>
                 </tr>
                 <tr>
                     <th></th>
-                    <th><input type="number" id="spinner_pos_z" onchange="onSpinnerPosZChange()" onspin="onSpinnerPosZChange()" step="0.1"></th>
                     <th>In Depth</th>
+                    <th><input type="number" id="spinner_pos_z" onchange="onSpinnerPosZChange()" onspin="onSpinnerPosZChange()" step="0.1"></th>
+
                     <th><div class="help-tip">
-                        <p>Whit this panel, you can move an object in depth writing directly or using the arrows.</p>
+                        <p>With this panel, you can move an object in depth writing directly or using the arrows.</p>
                     </div></th>
                 </tr>
 
                 <tr class="firstOfType">
                     <th class="firstOfType"></th>
-                    <th class="firstOfType"><input type="number" id="dim_x" onchange="onDimXChange()" onspin="onDimXChange()" step="0.1"></th>
                     <th class="firstOfType">Height</th>
+                    <th class="firstOfType"><input type="number" id="dim_x" onchange="onDimXChange()" onspin="onDimXChange()" step="0.1"></th>
+
                     <th><div class="help-tip" style="top: 10px;">
-                        <p>Whit this panel, you can stretch an object horizontally writing directly or using the arrows.</p>
+                        <p>With this panel, you can stretch an object horizontally writing directly or using the arrows.</p>
                     </div></th>
                 </tr>
                 <tr>
                     <th>Dimension: </th>
-                    <th><input type="number" id="dim_y" onchange="onDimYChange()" onspin="onDimYChange()" step="0.1"></th>
                     <th>Width</th>
+                    <th><input type="number" id="dim_y" onchange="onDimYChange()" onspin="onDimYChange()" step="0.1"></th>
+
                     <th><div class="help-tip">
-                        <p>Whit this panel, you can stretch an object vertically writing directly or using the arrows.</p>
+                        <p>With this panel, you can stretch an object vertically writing directly or using the arrows.</p>
                     </div></th>
                 </tr>
                 <tr>
                     <th></th>
-                    <th><input type="number" id="dim_z" onchange="onDimZChange()" onspin="onDimZChange()" step="0.1"></th>
                     <th>Depth</th>
+                    <th><input type="number" id="dim_z" onchange="onDimZChange()" onspin="onDimZChange()" step="0.1"></th>
+
                     <th><div class="help-tip">
-                        <p>Whit this panel, you can stretch an object's depth writing directly or using the arrows.</p>
+                        <p>With this panel, you can stretch an object's depth writing directly or using the arrows.</p>
                     </div></th>
                 </tr>
             </br>
                 <tr class="firstOfType">
                     <td class="firstOfType">Color:</td>
-                    <td class="firstOfType"><input class="jscolor" id="jscolor" onchange="onJSColorEdit()"></td>
                     <td class="firstOfType"></td>
+                    <td class="firstOfType"><input class="jscolor" id="jscolor" onchange="onJSColorEdit()"></td>
+
                     <td class="firstOfType"><div class="help-tip" style="top: 10px;">
                         <p>Choose a color in the rectangle for editing the entity's one. You can also write it yourself (for expert users only).</p>
                     </div></td>
                 </tr>
 
                 <tr class="firstOfType">
+
                     <th class="firstOfType">Visible:</th>
-                    <th class="firstOfType"><input type="checkbox" id="entity_visible" onchange="onVisibilityChange()"></th>
                     <th></th>
+                    <th class="firstOfType"><input type="checkbox" id="entity_visible" onchange="onVisibilityChange()"></th>
+
                     <td><div class="help-tip" style="top: 10px;">
                         <p>If the checkbox is set object is visible, else the object is not visible</p>
                     </div></td>
@@ -124,7 +133,7 @@
     <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <div id="main">
         <a-scene>
-            <a-entity camera look-controls wasd-controls mouse-cursor>
+            <a-entity camera mouse-cursor>
                 <a-entity cursor="rayOrigin: mouse"</a-entity>
             <!--<a-rounded position="1.5 0.0 -1.5" width="4" height="3.1" radius="0.05" rotation="0 0 0" scale="0.3 0.3 0.3">
 
