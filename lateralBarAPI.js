@@ -77,3 +77,37 @@ function updateVisibilityCheckBox(selectedElement)
     }
 
 }
+
+/**
+ *  Select an element. This element will be the one that will be show in the lateral bar.
+ * @param element2BSelected is the element that will be show in the bar
+ */
+function selectAnElement(element2BSelected)
+{
+
+    if(!element2BSelected.classList.contains("selected"))
+    {
+        myelement.classList.add("selected");
+    }
+    else
+    {
+        console.log("Element was already selected;");
+    }
+
+}
+/**
+ *  Deselect an element. The element properties will no longer be shown in the bar-
+ *  WARNING: Be sure to close the lateral bar after using this
+ * @param element2BSelected is the element that is show in the bar.
+ */
+function deselectAnElement(elementSelected)
+{
+    if(elementSelected.classList.contains("selected"))
+    {
+        elementSelected.classList.remove("selected");
+    }
+    else
+    {
+        console.log("error: element wasn't selected");
+    }
+}

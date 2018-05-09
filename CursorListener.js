@@ -16,6 +16,9 @@ AFRAME.registerComponent('my-cursor-listener', {
                 selected2BeRemoved[0].classList.remove("selected");
             }
             myelement.classList.add("selected");
+
+
+
             updateEntireLateralBar(myelement);
 
 
