@@ -3,12 +3,16 @@ function updateEntireLateralBar(selectedElement)
 
 
     var inputPosX = document.getElementById("spinner_pos_x");
-    var inputPosZ = document.getElementById("spinner_pos_y");
-    var inputPosY = document.getElementById("spinner_pos_z");
+    var inputPosY = document.getElementById("spinner_pos_y");
+    var inputPosZ = document.getElementById("spinner_pos_z");
 
     var inputDimX = document.getElementById("dim_x");
     var inputDimY = document.getElementById("dim_y");
     var inputDimZ = document.getElementById("dim_z");
+
+    var inputRotX = document.getElementById("spinner_rotation_x");
+    var inputRotY = document.getElementById("spinner_rotation_y");
+    var inputRotZ = document.getElementById("spinner_rotation_z");
 
     var inputJsColor = document.getElementById("jscolor");
     //var inputProva = document.getElementById("prova");
@@ -22,6 +26,10 @@ function updateEntireLateralBar(selectedElement)
     inputDimX.value = (selectedElement.getAttribute("scale").x).toString();
     inputDimY.value = (selectedElement.getAttribute("scale").y).toString();
     inputDimZ.value = (selectedElement.getAttribute("scale").z).toString();
+
+    inputRotX.value = (selectedElement.getAttribute("rotation").x).toString();
+    inputRotY.value = (selectedElement.getAttribute("rotation").y).toString();
+    inputRotZ.value = (selectedElement.getAttribute("rotation").z).toString();
 
     inputJsColor.jscolor.fromString(selectedElement.getAttribute("color").toString());
     //inputJsColor.jscolor.value
@@ -39,13 +47,25 @@ function updateEntireLateralBar(selectedElement)
 function updatePositionsSpinners(selectedElement)
 {
     var inputPosX = document.getElementById("spinner_pos_x");
-    var inputPosZ = document.getElementById("spinner_pos_y");
-    var inputPosY = document.getElementById("spinner_pos_z");
+    var inputPosY = document.getElementById("spinner_pos_y");
+    var inputPosZ = document.getElementById("spinner_pos_z");
 
     inputPosX.value = (selectedElement.getAttribute("position").x).toString();
     inputPosZ.value = (selectedElement.getAttribute("position").z).toString();
     inputPosY.value = (selectedElement.getAttribute("position").y).toString();
 }
+
+function updateRotationSpinners(selectedElement)
+{
+    var inputPosX = document.getElementById("spinner_rotation_x");
+    var inputPosY = document.getElementById("spinner_rotation_y");
+    var inputPosZ = document.getElementById("spinner_rotation_z");
+
+    inputPosX.value = (selectedElement.getAttribute("position").x).toString();
+    inputPosZ.value = (selectedElement.getAttribute("position").z).toString();
+    inputPosY.value = (selectedElement.getAttribute("position").y).toString();
+}
+
 
 function updateScalesSpinners(selectedElement)
 {
