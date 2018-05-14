@@ -10,6 +10,8 @@
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    float: left;
+    max-width: 500px;
 }
 
 /* The navigation menu links */
@@ -23,12 +25,14 @@
 }
 
 .sidenav h3 {
-    padding: 8px 8px 8px 32px;
+    padding: 4px 4px 4px 16px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     color: #818181;
     display: block;
     transition: 0.3s;
+
+
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -43,6 +47,11 @@
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+
+}
+
+.sidenav input {
+    width: 60%;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -57,9 +66,13 @@
     .sidenav a {font-size: 18px;}
 }
 
-/* Table containing the elements on the side bar */
-th, td {
-    padding: 5px;
+/* Table containing the elements on the side bar*/
+.sidenav th, tr {
+    padding-top: 5px;
+}
+
+.sidenav th {
+    width: 15%;
 }
 
 .help-tip{
@@ -116,15 +129,14 @@ th, td {
     right:10px;
     top:-12px;
 }
-
-.help-tip p:after{ /* Prevents the tooltip from being hidden */
+/*.help-tip p:after{  Prevents the tooltip from being hidden
     width:100%;
     height:40px;
     content:'';
     position: absolute;
     top:-40px;
     left:0;
-}
+}*/
 
 /* CSS animation */
 
@@ -143,4 +155,29 @@ th, td {
 @keyframes fadeIn {
     0% { opacity:0; }
     100% { opacity:100%; }
+}
+
+
+
+.sidenav input[type=checkbox]
+{
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    padding: 10px;
+}
+
+/* Might want to wrap a span around your checkbox text */
+.sidenav .checkboxtext
+{
+    /* Checkbox text */
+    font-size: 110%;
+    display: inline;
+}
+
+.sidenav .firstOfType
+{
+    padding-top: 25px;
 }

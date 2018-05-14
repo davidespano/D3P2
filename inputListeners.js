@@ -30,7 +30,7 @@ function onSpinnerPosXChange()
 
     var spinnerPosX = document.getElementById("spinner_pos_x");
 
-    elementsSelected[0].object3D.position.x = spinnerPosX.value;
+    elementsSelected[0].object3D.position.x = parseFloat(spinnerPosX.value);
 
 }
 
@@ -46,7 +46,7 @@ function onSpinnerPosYChange()
 
     var spinnerPosY = document.getElementById("spinner_pos_y");
 
-    elementsSelected[0].object3D.position.y = spinnerPosY.value;
+    elementsSelected[0].object3D.position.y = parseFloat(spinnerPosY.value);
 
 }
 
@@ -62,9 +62,60 @@ function onSpinnerPosZChange()
 
     var spinnerPosZ = document.getElementById("spinner_pos_z");
 
-    elementsSelected[0].object3D.position.z = spinnerPosZ.value;
+    console.log("spinnerZ =" + spinnerPosZ.value);
+
+    elementsSelected[0].object3D.position.z = parseFloat(spinnerPosZ.value);
 
 }
+
+/**
+ *  Handling the spinner that edits the rotation on the x-axis
+ *  When the spinner associated to the x-axis is edited, the object rotate on x-axis
+ */
+
+function onSpinnerRotXChange()
+{
+
+    var elementsSelected = document.getElementsByClassName("selected");
+
+    var spinnerPosX = document.getElementById("spinner_rotation_x");
+
+    elementsSelected[0].object3D.rotation.x = parseFloat(spinnerPosX.value);
+
+}
+
+/**
+ *  Handling the spinner that edits the rotation on the x-axis
+ *  When the spinner associated to the x-axis is edited, the object moves on x-axis
+ */
+
+function onSpinnerRotYChange()
+{
+
+    var elementsSelected = document.getElementsByClassName("selected");
+
+    var spinnerPosY = document.getElementById("spinner_rotation_y");
+
+    elementsSelected[0].object3D.rotation.y = parseFloat(spinnerPosY.value);
+
+}
+
+/**
+ *  Handling the spinner that edits the translation on the x-axis
+ *  When the spinner associated to the x-axis is edited, the object moves on x-axis
+ */
+
+function onSpinnerRotZChange()
+{
+
+    var elementsSelected = document.getElementsByClassName("selected");
+
+    var spinnerPosZ = document.getElementById("spinner_rotation_z");
+
+    elementsSelected[0].object3D.rotation.z = parseFloat(spinnerPosZ.value);
+
+}
+
 
 /**
  *  Handling the spinner that edits the scale on the x-axis
