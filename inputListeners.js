@@ -78,10 +78,14 @@ function onSpinnerRotXChange()
 
     var elementsSelected = document.getElementsByClassName("selected");
 
-    var spinnerPosX = document.getElementById("spinner_rotation_x");
+    var spinnerRotX = document.getElementById("spinner_rotation_x");
 
-    elementsSelected[0].object3D.rotation.x = parseFloat(spinnerPosX.value);
+    console.log("spinnerRotXValue = ",parseFloat(spinnerRotX.value));
+    console.log("spinnerRotXValue = ",elementsSelected[0].object3D.rotation.x);
 
+    elementsSelected[0].object3D.rotation.x = THREE.Math.degToRad(parseFloat(spinnerRotX.value));
+
+    //console.log("Element rot x value = ",elementsSelected[0].object3D.rotation.x);
 }
 
 /**
@@ -94,9 +98,9 @@ function onSpinnerRotYChange()
 
     var elementsSelected = document.getElementsByClassName("selected");
 
-    var spinnerPosY = document.getElementById("spinner_rotation_y");
+    var spinnerRotY = document.getElementById("spinner_rotation_y");
 
-    elementsSelected[0].object3D.rotation.y = parseFloat(spinnerPosY.value);
+    elementsSelected[0].object3D.rotation.y = THREE.Math.degToRad(parseFloat(spinnerRotY.value));
 
 }
 
@@ -110,9 +114,9 @@ function onSpinnerRotZChange()
 
     var elementsSelected = document.getElementsByClassName("selected");
 
-    var spinnerPosZ = document.getElementById("spinner_rotation_z");
+    var spinnerRotZ = document.getElementById("spinner_rotation_z");
 
-    elementsSelected[0].object3D.rotation.z = parseFloat(spinnerPosZ.value);
+    elementsSelected[0].object3D.rotation.z = THREE.Math.degToRad(parseFloat(spinnerRotZ.value));
 
 }
 

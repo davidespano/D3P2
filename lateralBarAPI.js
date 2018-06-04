@@ -15,6 +15,7 @@ function updateEntireLateralBar(selectedElement)
     var inputRotZ = document.getElementById("spinner_rotation_z");
 
     var inputJsColor = document.getElementById("jscolor");
+    var inputJsColorRow = document.getElementById("jscolorRow");
     //var inputProva = document.getElementById("prova");
 
     var checkboxVisible = document.getElementById("entity_visible");
@@ -31,7 +32,17 @@ function updateEntireLateralBar(selectedElement)
     inputRotY.value = (selectedElement.getAttribute("rotation").y).toString();
     inputRotZ.value = (selectedElement.getAttribute("rotation").z).toString();
 
-    inputJsColor.jscolor.fromString(selectedElement.getAttribute("color").toString());
+    //console.log("Rotation values after: x ",inputRotX.value, " Rotation values before: y ",inputRotY.value, " Rotation values before: z ",inputRotZ.value);
+
+    if(selectedElement.getAttribute("color") != null)
+    {
+        inputJsColor.jscolor.fromString(selectedElement.getAttribute("color").toString());
+    }
+    else
+    {
+        inputJsColorRow.style.display = "none";
+    }
+
     //inputJsColor.jscolor.value
 
     if(selectedElement.getAttribute("visible"))
@@ -81,7 +92,15 @@ function updateScalesSpinners(selectedElement)
 function updateColorPicker(selectedElement)
 {
     var inputJsColor = document.getElementById("jscolor");
-    inputJsColor.jscolor.fromString(selectedElement.getAttribute("color").toString());
+    var inputJsColorRow = document.getElementById("jscolorRow");
+    if(selectedElement.getAttribute("color") != null)
+    {
+        inputJsColor.jscolor.fromString(selectedElement.getAttribute("color").toString());
+    }
+    else
+    {
+        inputJsColorRow.style.display = "none";
+    }
 }
 
 function updateVisibilityCheckBox(selectedElement)
