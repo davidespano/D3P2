@@ -24,11 +24,16 @@ function onRadioButtonClick(radioValue, radioID)
         $("#"+radioID).prop('checked', false)
         document.getElementById("radioLabel"+radioValue).style.opacity = "0.2";
         newEntity = document.createElement('a-entity')
-        newEntity.object3D.position.set(3,-3, 2);
+        newEntity.object3D.position.set(-1,0.5, -3);
 
         inSceneEntity = addToScene(itemList[radioValue],newEntity.object3D.position);
-        updateEntireLateralBar(inSceneEntity);
-        openNav();
+        inSceneEntity.addEventListener('loaded', function(){
+            updateEntireLateralBar(inSceneEntity);
+            openNav();
+            console.log(inSceneEntity.getAttribute("position").x.toString());
+
+        });
+
     }
     else
     {

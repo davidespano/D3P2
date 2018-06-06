@@ -1,12 +1,24 @@
 
 var itemList;
 
+/**
+ * Since the google API doesn't allow calls that are over 10 OBJ, we need an offset if we want to search over the tenth
+ * @param offset number that allows you to skip the first "offset" objects
+ * @param value string that you want to search in the repository
+ * @returns {Promise<any>}
+ */
 function callSearchApi (offset, value) {
     return fetch('https://gblock.3d.io/api/search?limit=10&offset=' + offset + '&query=' + value).then(function (response) {
         return response.json()
     })
 }
 
+/**
+ *  Search for models with "value" as description in the poly.google repository
+ *  See @callSearchApi.
+ *  After searching, add all items in a radio list "drop-down look alike"
+ * @param value
+ */
 function searchPolyModels (value)
 {
 
@@ -36,7 +48,7 @@ function searchPolyModels (value)
 
         var dropdownImages = document.getElementById("image-dropdown");
         emptyDropdownList();
-        var i = 0;
+
         console.log(items[8]);
         items.forEach(function(_item, _index)
         {
@@ -73,17 +85,17 @@ function addToScene (item, position) {
 
     newEntity.addEventListener('model-loaded', function (event) {
 
-        //uiMessage.close()
-        //io3d.utils.ui.message.success('Added<br><a class="io3d-inspector-plugins___truncate-message" href="' + item.url + '" target="_blank">' + item.url + '</a>')
-
-        // center model to picking position
-        var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
-        var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
-        position.set(
-            position.x - bb.min.x - size.x / 2,
-            -bb.min.y,
-            position.z - bb.min.z - size.z / 2
-        )
+        // //uiMessage.close()
+        // //io3d.utils.ui.message.success('Added<br><a class="io3d-inspector-plugins___truncate-message" href="' + item.url + '" target="_blank">' + item.url + '</a>')
+        //
+        // // center model to picking position
+        // var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
+        // var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
+        // position.set(
+        //     position.x - bb.min.x - size.x / 2,
+        //     -bb.min.y,
+        //     position.z - bb.min.z - size.z / 2
+        // )
 
         newEntity.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z)
 
@@ -101,7 +113,7 @@ function addToScene (item, position) {
 
     newEntity.setAttribute('gblock', item.url);
     newEntity.setAttribute("my-cursor-listener", "");
-    
+
     var selected2BeRemoved = document.getElementsByClassName("selected");
     if(selected2BeRemoved[0] != undefined)
     {
