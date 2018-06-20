@@ -1,5 +1,6 @@
 
 var itemList;
+var objThatWillBeAddToScene;
 
 /**
  * Since the google API doesn't allow calls that are over 10 OBJ, we need an offset if we want to search over the tenth
@@ -55,14 +56,16 @@ function searchPolyModels (value)
             if(_index == 0)
             {
                 dropdownImages.innerHTML +=
-                    "<input type=\"radio\"  name=\"line-style\" id=\"line"+_index+"\" onclick=\"onRadioButtonClick(this.value, this.id)\"  value=" +_index+"  /><label id=\"radioLabel"+_index+"\"  for=\"line"+_index+"\"  style=\"background-image: url(' "+_item.thumb+" '); background-size: 150px;  \" ></label>"
+                    "<input type=\"radio\"  name=\"line-style\" id=\"line"+_index+"\" onclick=\"onRadioButtonClick(this.value, this.id)\"  value=\"" +_index+"\"  /><label id=\"radioLabel"+_index+"\"  for=\"line"+_index+"\"  style=\"background-image: url(' "+_item.thumb+" '); background-size: 150px;  \" src=\"img_logo.gif\" draggable=\"true\"\n" +
+                    "ondragstart=\"drag(event)\"></label>"
 
             }
             else
             {
 
             dropdownImages.innerHTML +=
-                "<input type=\"radio\" id=\"line"+_index+"\" name=\"line-style\" onclick=\"onRadioButtonClick(this.value, this.id)\" value=" +_index+"  /><label id=\"radioLabel"+_index+"\" for=\"line"+ _index+"\"  style=\"background-image: url(' "+_item.thumb+" '); background-size: 150px;  \" ></label>"
+                "<input type=\"radio\" id=\"line"+_index+"\" name=\"line-style\" onclick=\"onRadioButtonClick(this.value, this.id)\" value=\"" +_index+"\"  /><label id=\"radioLabel"+_index+"\" for=\"line"+ _index+"\"  style=\"background-image: url(' "+_item.thumb+" '); background-size: 150px;  \" src=\"img_logo.gif\" draggable=\"true\"\n" +
+                "ondragstart=\"drag(event)\"></label>"
 
             }
         })
@@ -85,19 +88,18 @@ function addToScene (item, position) {
 
     newEntity.addEventListener('model-loaded', function (event) {
 
-        // //uiMessage.close()
-        // //io3d.utils.ui.message.success('Added<br><a class="io3d-inspector-plugins___truncate-message" href="' + item.url + '" target="_blank">' + item.url + '</a>')
-        //
-        // // center model to picking position
-        // var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
-        // var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
-        // position.set(
-        //     position.x - bb.min.x - size.x / 2,
-        //     -bb.min.y,
-        //     position.z - bb.min.z - size.z / 2
-        // )
+        // center model to picking position
+        var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
+        var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
+        position.set(
+            position.x - bb.min.x - size.x / 2,
+            -bb.min.y,
+            position.z - bb.min.z - size.z / 2
+        )
 
         newEntity.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z)
+        newEntity.setAttribute('scale', 0.9 + ' ' + 0.9 + ' ' + 0.9)
+
 
         //callback()
 
@@ -113,6 +115,7 @@ function addToScene (item, position) {
 
     newEntity.setAttribute('gblock', item.url);
     newEntity.setAttribute("my-cursor-listener", "");
+    //newEntity.setAttribute("autoscale", "");
 
     var selected2BeRemoved = document.getElementsByClassName("selected");
     if(selected2BeRemoved[0] != undefined)
@@ -121,8 +124,10 @@ function addToScene (item, position) {
     }
     newEntity.classList.add("selected");
     newEntity.classList.add("affectedByEvents");
+    //newEntity.classList.add("justInserted");
 
-    document.querySelector('a-scene').appendChild(newEntity)
+    document.querySelector('a-scene').appendChild(newEntity);
+    objThatWillBeAddToScene = newEntity;
     return newEntity;
 
 }

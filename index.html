@@ -33,6 +33,10 @@
     <script type="text/javascript" src="lateralBarAPI.js"></script>
     <script type="text/javascript" src="textureHandler.js"></script>
     <script type="text/javascript" src="topBarAPI.js"></script>
+    <script type="text/javascript" src="cursorTo3DPosition.js"></script>
+    <script type="text/javascript" src="AframeAutoscale.js"></script>
+    <script type="text/javascript" src="HTMLImporter.js"></script>
+    <script type="text/javascript" src="InputHTMLInjection.js"></script>
 
 
 
@@ -44,238 +48,78 @@
 </head>
 <body>
 
-    <div id="mySidenav" class="sidenav">
-        <h3>
-            <table>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr class="firstOfType">
-                    <th class="firstOfType"></th>
-                    <th class="firstOfType">Horizontal</th>
-                    <th class="firstOfType"><input type="number" id="spinner_pos_x" onchange="onSpinnerPosXChange()" onspin="onSpinnerPosXChange()" step="0.1"></th>
+<div id="mySidenav" class="sidenav">
+    <h3>
+        <table class="lateralTable">
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; </a>
 
-                    <th><div class="help-tip" style="top: 10px;">
-                        <p>With this panel, you can move an object horizontally writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-                <tr>
-                    <th>Position: </th>
-                    <th>Vertical</th>
-                    <th><input type="number" id="spinner_pos_y" onchange="onSpinnerPosYChange()" onspin="onSpinnerPosYChange()" step="0.1"></th>
+    </h3>
 
-                    <th><div class="help-tip">
-                        <p>With this panel, you can move an object vertically writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th>In Depth</th>
-                    <th><input type="number" id="spinner_pos_z" onchange="onSpinnerPosZChange()" onspin="onSpinnerPosZChange()" step="0.1"></th>
+</div>
 
-                    <th><div class="help-tip">
-                        <p>With this panel, you can move an object in depth writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()">open</span>
 
-                <tr class="firstOfType">
-                    <th class="firstOfType"></th>
-                    <th class="firstOfType">Horizontal</th>
-                    <th class="firstOfType"><input type="number" id="spinner_rotation_y" onchange="onSpinnerRotYChange()" onspin="onSpinnerRotYChange()" step="1"></th>
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main" >
 
-                    <th><div class="help-tip" style="top: 10px;">
-                        <p>With this panel, you can rotate an object horizontally writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-                <tr>
-                    <th>Rotation: </th>
-                    <th>Vertical</th>
-                    <th><input type="number" id="spinner_rotation_x" onchange="onSpinnerRotXChange()" onspin="onSpinnerRotXChange()" step="1"></th>
+    <a-scene ondrop="drop(event)" ondragover="allowDrop(event)">
 
-                    <th><div class="help-tip">
-                        <p>With this panel, you can rotate an object vertically writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th>In Depth</th>
-                    <th><input type="number" id="spinner_rotation_z" onchange="onSpinnerRotZChange()" onspin="onSpinnerRotZChange()" step="1"></th>
-
-                    <th><div class="help-tip">
-                        <p>With this panel, you can rotate an object in depth writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-
-                <tr class="firstOfType">
-                    <th class="firstOfType"></th>
-                    <th class="firstOfType">Height</th>
-                    <th class="firstOfType"><input type="number" id="dim_x" onchange="onDimXChange()" onspin="onDimXChange()" step="0.1"></th>
-
-                    <th><div class="help-tip" style="top: 10px;">
-                        <p>With this panel, you can stretch an object horizontally writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-                <tr>
-                    <th>Dimension: </th>
-                    <th>Width</th>
-                    <th><input type="number" id="dim_y" onchange="onDimYChange()" onspin="onDimYChange()" step="0.1"></th>
-
-                    <th><div class="help-tip">
-                        <p>With this panel, you can stretch an object vertically writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th>Depth</th>
-                    <th><input type="number" id="dim_z" onchange="onDimZChange()" onspin="onDimZChange()" step="0.1"></th>
-
-                    <th><div class="help-tip">
-                        <p>With this panel, you can stretch an object's depth writing directly or using the arrows.</p>
-                    </div></th>
-                </tr>
-            </br>
-                <tr class="firstOfType" id="jscolorRow">
-                    <td class="firstOfType">Color:</td>
-                    <td class="firstOfType"></td>
-                    <td class="firstOfType"><input class="jscolor" id="jscolor" onchange="onJSColorEdit()"></td>
-
-                    <td class="firstOfType"><div class="help-tip" style="top: 10px;">
-                        <p>Choose a color in the rectangle for editing the entity's one. You can also write it yourself (for expert users only).</p>
-                    </div></td>
-                </tr>
-
-                <tr class="firstOfType">
-
-                    <th class="firstOfType">Visible:</th>
-                    <th></th>
-                    <th class="firstOfType"><input type="checkbox" id="entity_visible" onchange="onVisibilityChange()"></th>
-
-                    <td><div class="help-tip" style="top: 10px;">
-                        <p>If the checkbox is set object is visible, else the object is not visible</p>
-                    </div></td>
-                </tr>
-
-            </table>
-             <!-- Posizione: <input type="text" id="pos_x"  style='width:25px;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" id="pos_y"  style='width:25px;' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" id="pos_z"  style='width:25px;' > <br> </br>
-            Colore: <input class="jscolor" id="jscolor" onchange="onJSColorEdit()">-->
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; </a>
-
-        </h3>
-
-    </div>
-
-    <!-- Use any element to open the sidenav -->
-    <span onclick="openNav()">open</span>
-
-    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-    <div id="main">
-
-        <a-scene>
-
-            <!-- <obj-model my-cursor-listener class="affectedByEvents" src="#linnet-obj" mtl="#linnet-mtl" position="0 0 -5" scale="0.01 0.01 0.01"></obj-model>
-            --><a-sky color="#ABABAB"></a-sky>
-
-
-            <!--<a-box my-cursor-listener class="affectedByEvents" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>-->
-
-
-            <a-entity camera look-controls wasd-controls mouse-cursor>
-                <a-entity cursor="rayOrigin: mouse"></a-entity>
-
-            </a-entity>
-
-        </a-scene>
-        <ul>
-            <!--<li><a href="#home">Houses</a></li>-->
-            <!--<li><a href="#news">Position for Inserting</a></li>-->
-            <!--<li><button id="randomInsert" type="button">Random House!</button></li>-->
-            <li><input id="topbar-search" type="text" placeholder="Search.." onchange="onTopBarSearchChange()"></li>
-            <li class="dropdown">
-                <div id="image-dropdown" >
-
-                </div>
-            </li>
-
-        </ul>
-
-
-
-        <script>
-            /*the only js is to continuously checking the value of the dropdown. for posterity*/
-            var i = setInterval(function(){$("#trace").val($("input[name=line-style]:checked").val());},100);
-            //fixTextures();
-            //addRandomHouse();
-            searchPolyModels("house");
-
-
-           /* var scene = document.querySelector('a-scene');
-            var objModel = document.createElement('obj-model');
-            objModel.setAttribute("src", "linnet.obj");
-            objModel.setAttribute("mtl", "linnet.mtl");
-
-            scene.appendChild(objModel);
-            console.log(objModel);
-            objModel.setAttribute('position', {x: 0, y: 0, z: -5});*/
+        <!-- <obj-model my-cursor-listener class="affectedByEvents" src="#linnet-obj" mtl="#linnet-mtl" position="0 0 -5" scale="0.01 0.01 0.01"></obj-model>-->
+        <a-sky color="#ABABAB"></a-sky>
 
 
 
 
-            //var inputJSColor = document.getElementById("jscolor");
-               //inputJSColor.addEventListener("input", onJSColorEdit);
+        <a-entity camera look-controls wasd-controls mouse-cursor>
+            <a-entity cursor="rayOrigin: mouse"></a-entity>
 
-               /*   console.log(inputJSColor);
-                  //let button = document.querySelector('a-button');
-              var scene = document.querySelector('a-scene');
-              var cylinder = document.querySelector('a-cylinder');
-              var rounded = document.querySelector('a-rounded');
-              var position = cylinder.getAttribute('position');
-              var atext = document.querySelector('a-text');
+        </a-entity>
 
-              function onClickOnCylinder ()
-              {
-                  //rounded.setAttribute("visible", "true");
-                  //position = cylinder.getAttribute('position');
-                  cylinder.setAttribute("color", 'blue');
-                  //mixin_pos.setAttribute('value', 'position = ' + position);
-                  atext.setAttribute("value", "position = ("+position.x+", "+position.y+", "+position.z+")");
-                  openNav();
+    </a-scene>
+    <ul>
 
-              }
-              function run ()
-              {
+        <table>
+            <tr>
+                <td><li><input id="topbar-search" type="text" placeholder="Search.." onchange="onTopBarSearchChange()"></li></td>
 
-                  atext.setAttribute("value", "position = ("+position.x+", "+position.y+", "+position.z+")");
+            </tr>
+            <tr>
+                <td>
+                    <li class="dropdown">
+                        <div id="image-dropdown" >
 
-                  console.log("C");
-                  var  children = scene.querySelectorAll("affectedByEvents");
-                  //rounded.setAttribute("visible", "true");
-                  children.forEach(function(item)
-                  {
-                      console.log("inizia qua");
-                      console.log( item );
-                      console.log("finisce qua");
-                  });
-                  cylinder.addEventListener("click", onClickOnCylinder );
+                        </div>
+                    </li>
+                </td>
+            </tr>
+        </table>
 
-                  //let numberOfEntities = document.querySelectorAll
-              }
-              if(scene.hasLoaded)
-              {
-                  rounded.setAttribute("visible", "false");
-                  console.log("A");
-                  run();
-              }
-              else
-              {
-                  rounded.setAttribute("visible", "false");
-                  console.log("AB");
-                  //run();
-                  scene.addEventListener('loaded', run);
 
-              }*/
+
+    </ul>
+
+
+
+    <script>
+        insertPositionInputInTable("lateralTable");
+        insertRotationInputInTable("lateralTable");
+        insertScaleInputInTable("lateralTable");
+        insertColorPickerInTable("lateralTable");
+        insertVisibilityCheckboxInTable("lateralTable");
+        /*the only js is to continuously checking the value of the dropdown. for posterity*/
+        var i = setInterval(function(){$("#trace").val($("input[name=line-style]:checked").val());},100);
+        //fixTextures();
+        //addRandomHouse();
+        searchPolyModels("house");
+
+
+
 
     </script>
 
