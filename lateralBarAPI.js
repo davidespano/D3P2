@@ -66,6 +66,19 @@ function updatePositionsSpinners(selectedElement)
     inputPosY.value = (selectedElement.getAttribute("position").y).toString();
 }
 
+function updatePositionsSpinnersPositionOnly(position)
+{
+    console.log("position ",position);
+    console.log("position.x ",position.x);
+    var inputPosX = document.getElementById("spinner_pos_x");
+    var inputPosY = document.getElementById("spinner_pos_y");
+    var inputPosZ = document.getElementById("spinner_pos_z");
+
+    inputPosX.value = (position.x).toString();
+    inputPosZ.value = (position.z).toString();
+    inputPosY.value = (position.y).toString();
+}
+
 function updateRotationSpinners(selectedElement)
 {
     var inputPosX = document.getElementById("spinner_rotation_x");
