@@ -1,0 +1,16 @@
+<application>
+  <component name="libraryTable">
+    <library name="@types/core-js" type="javaScript">
+      <CLASSES />
+      <SOURCES />
+    </library>
+    <library name="@types/flux" type="javaScript">
+      <CLASSES />
+      <SOURCES />
+    </library>
+    <library name="@types/node" type="javaScript">
+      <CLASSES />
+      <SOURCES />
+    </library>
+  </component>
+</application>
